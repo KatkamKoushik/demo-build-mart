@@ -4,10 +4,12 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, X, ArrowRight } from "lucide-react";
 import { useCart } from "@/providers/CartProvider";
+import { useRouter } from "next/navigation";
 
 const POPULAR_SEARCHES = ["Cement", "Plywood", "Vitrified Tiles", "TMT Bars", "LED Lights"];
 
 export default function SearchModal() {
+  const router = useRouter();
   const { isSearchOpen, setIsSearchOpen } = useCart();
   const [query, setQuery] = useState("");
 
@@ -76,7 +78,7 @@ export default function SearchModal() {
                 </h3>
                 {/* Mock Search Results */}
                 {[1, 2, 3].map((i) => (
-                  <div key={i} className="flex items-center gap-4 group cursor-pointer">
+                  <div key={i} onClick={() => { setIsSearchOpen(false); router.push(`/product/${i}`); }} className="flex items-center gap-4 group cursor-pointer">
                     <div className="w-12 h-12 bg-charcoal/5 rounded-lg flex items-center justify-center">
                       <Search className="w-5 h-5 text-muted opacity-50" />
                     </div>

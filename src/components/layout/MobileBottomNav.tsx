@@ -3,8 +3,10 @@
 import { motion } from "framer-motion";
 import { Home, Search, ShoppingBag, User } from "lucide-react";
 import { useCart } from "@/providers/CartProvider";
+import { useRouter } from "next/navigation";
 
 export default function MobileBottomNav() {
+  const router = useRouter();
   const { totalItems, setIsCartOpen, setIsSearchOpen } = useCart();
 
   const navItems = [
@@ -19,15 +21,17 @@ export default function MobileBottomNav() {
       initial={{ y: 100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      className="fixed bottom-4 left-4 right-4 md:left-1/2 md:-translate-x-1/2 md:w-max z-50"
+      className="fixed bottom-4 left-4 right-4 z-50 md:hidden"
     >
-      <div className="glass-dark rounded-full px-6 py-3 md:px-8 md:py-4 border border-white/10 shadow-2xl flex justify-between md:justify-center md:gap-8 items-center">
+      <div className="glass-dark rounded-full px-6 py-3 border border-white/10 shadow-2xl flex justify-between items-center">
         {navItems.map((item) => (
           <button
             key={item.id}
             onClick={() => {
               if (item.id === "cart") setIsCartOpen(true);
               else if (item.id === "explore") setIsSearchOpen(true);
+              else if (item.id === "profile") router.push("/profile");
+              else if (item.id === "home") router.push("/");
             }}
             className="relative flex flex-col items-center justify-center w-12 h-12"
           >
