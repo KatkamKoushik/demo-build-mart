@@ -52,9 +52,7 @@ export default function InspirationSection() {
           className="relative w-full h-[60vh] md:h-[80vh] rounded-3xl overflow-hidden"
         >
           <motion.div 
-            style={{ y }}
             className="absolute inset-0 -top-[10%] -bottom-[10%] w-full h-[120%] bg-cover bg-center"
-            // Note: Since we generated two images, I'll use the interior one here for high impact
             style={{ backgroundImage: "url('/inspiration-interior.png')", y }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-carbon/90 via-transparent to-transparent" />
