@@ -2,13 +2,29 @@
 
 import { motion } from "framer-motion";
 import { Plus, Check } from "lucide-react";
-import { FEATURED_PRODUCTS } from "@/data/products";
 import { useCart } from "@/providers/CartProvider";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createClient } from "@/utils/supabase/client";
 
 export default function FeaturedProductsSection() {
   const { addToCart } = useCart();
   const [addedItems, setAddedItems] = useState<Set<string>>(new Set());
+  const [products, setProducts] = useState<any[]>([]);
+  const supabase = createClient();
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        .limit(6);
+        
+      if (!error && data) {
+        setProducts(data);
+      }
+    };
+    fetchProducts();
+  }, [supabase]);
 
   const handleAddToCart = (product: any) => {
     addToCart({ id: product.id, name: product.name, price: product.price });
@@ -37,7 +53,7 @@ export default function FeaturedProductsSection() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {FEATURED_PRODUCTS.map((product, index) => {
+          {products.map((product, index) => {
             const isAdded = addedItems.has(product.id);
             return (
               <motion.div

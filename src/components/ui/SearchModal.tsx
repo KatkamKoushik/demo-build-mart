@@ -1,24 +1,49 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, X, ArrowRight } from "lucide-react";
 import { useCart } from "@/providers/CartProvider";
 import { useRouter } from "next/navigation";
-
-import { FEATURED_PRODUCTS } from "@/data/products";
+import { createClient } from "@/utils/supabase/client";
 
 const POPULAR_SEARCHES = ["Cement", "Plywood", "Vitrified Tiles", "TMT Bars", "LED Lights"];
 
 export default function SearchModal() {
   const router = useRouter();
   const { isSearchOpen, setIsSearchOpen } = useCart();
+  const supabase = createClient();
+  
   const [query, setQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const searchResults = FEATURED_PRODUCTS.filter((product) => 
-    product.name.toLowerCase().includes(query.toLowerCase()) || 
-    product.category.toLowerCase().includes(query.toLowerCase())
-  );
+  useEffect(() => {
+    const fetchResults = async () => {
+      if (query.length <= 2) {
+        setSearchResults([]);
+        return;
+      }
+
+      setIsLoading(true);
+      const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        .or(`name.ilike.%${query}%,category.ilike.%${query}%`)
+        .limit(5);
+
+      if (!error && data) {
+        setSearchResults(data);
+      }
+      setIsLoading(false);
+    };
+
+    const debounce = setTimeout(() => {
+      fetchResults();
+    }, 300);
+
+    return () => clearTimeout(debounce);
+  }, [query, supabase]);
   
   const hasResults = query.length > 2;
 
@@ -80,7 +105,7 @@ export default function SearchModal() {
             ) : (
               <div className="space-y-6">
                 <h3 className="text-sm font-semibold text-muted uppercase tracking-wider mb-2">
-                  Products
+                  Products {isLoading && <span className="text-xs lowercase text-primary ml-2 animate-pulse">searching...</span>}
                 </h3>
                 {searchResults.length > 0 ? (
                   searchResults.map((product) => (
@@ -102,7 +127,7 @@ export default function SearchModal() {
                     </div>
                   ))
                 ) : (
-                  <p className="text-muted text-sm">No products found for "{query}".</p>
+                  !isLoading && <p className="text-muted text-sm">No products found for "{query}".</p>
                 )}
               </div>
             )}
