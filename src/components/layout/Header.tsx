@@ -18,30 +18,23 @@ export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
 
+  const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
-  const headerBg = useTransform(
-    scrollY,
-    [0, 100],
-    ["rgba(250,250,250,0)", "rgba(250,250,250,0.85)"]
-  );
-  const headerBlur = useTransform(scrollY, [0, 100], ["blur(0px)", "blur(20px)"]);
-  const headerShadow = useTransform(
-    scrollY,
-    [0, 100],
-    ["0 0 0 rgba(0,0,0,0)", "0 4px 30px rgba(43,45,66,0.04)"]
-  );
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (latest > 50 && !isScrolled) setIsScrolled(true);
+    else if (latest <= 50 && isScrolled) setIsScrolled(false);
+  });
 
   return (
     <>
-      <motion.header
+      <header
         id="site-header"
-        className="fixed top-0 left-0 right-0 z-50 h-[var(--header-height)] hidden md:block"
-        style={{
-          backgroundColor: headerBg,
-          backdropFilter: headerBlur,
-          WebkitBackdropFilter: headerBlur,
-          boxShadow: headerShadow,
-        }}
+        className={`fixed top-0 left-0 right-0 z-50 h-[var(--header-height)] hidden md:block transition-all duration-300 ${
+          isScrolled 
+            ? "bg-white/85 backdrop-blur-xl shadow-[0_4px_30px_rgba(43,45,66,0.04)]" 
+            : "bg-transparent"
+        }`}
       >
         <div className="container-main h-full flex items-center gap-8">
           {/* Logo */}
@@ -109,16 +102,14 @@ export default function Header() {
             )}
           </button>
         </div>
-      </motion.header>
+      </header>
 
-      {/* Mobile Top Header - Extremely Minimal */}
-      <motion.header
-        className="fixed top-0 left-0 right-0 z-50 h-16 md:hidden flex items-center justify-between px-4"
-        style={{
-          backgroundColor: headerBg,
-          backdropFilter: headerBlur,
-          WebkitBackdropFilter: headerBlur,
-        }}
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 h-16 md:hidden flex items-center justify-between px-4 transition-all duration-300 ${
+          isScrolled 
+            ? "bg-white/85 backdrop-blur-xl shadow-[0_4px_30px_rgba(43,45,66,0.04)]" 
+            : "bg-transparent"
+        }`}
       >
         <a href="#" className="text-lg font-medium text-carbon tracking-tight">
           Build<strong className="font-extrabold">Mart</strong>

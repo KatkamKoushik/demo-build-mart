@@ -122,9 +122,9 @@ export default function CollectionsSection() {
               {/* Content */}
               <div className="relative z-10 flex flex-col items-start h-full justify-between">
                 <div className="w-full flex justify-end">
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-md transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-1 group-hover:translate-x-1 ${collection.image ? 'bg-white/20' : 'bg-black/5'}`}>
+                  <a href="#featured-products" className={`w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-md transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-1 group-hover:translate-x-1 ${collection.image ? 'bg-white/20 hover:bg-white/30' : 'bg-black/5 hover:bg-black/10'}`}>
                     <ArrowUpRight className={`w-5 h-5 ${collection.image ? 'text-white' : collection.text}`} />
-                  </div>
+                  </a>
                 </div>
                 
                 <div>

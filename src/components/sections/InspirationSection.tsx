@@ -37,14 +37,15 @@ export default function InspirationSection() {
               Explore landmark projects realized using our material ecosystem.
             </motion.p>
           </div>
-          <motion.button
+          <motion.a
+            href="#collections"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-sm font-medium border-b border-white/30 pb-1 hover:border-white transition-colors"
+            className="text-sm font-medium border-b border-white/30 pb-1 hover:border-white transition-colors cursor-pointer"
           >
             View full gallery
-          </motion.button>
+          </motion.a>
         </div>
 
         <motion.div 
