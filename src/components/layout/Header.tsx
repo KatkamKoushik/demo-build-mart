@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Search, ShoppingBag, MapPin, ChevronDown } from "lucide-react";
 import LocationModal from "@/components/ui/LocationModal";
 import { useCart } from "@/providers/CartProvider";
@@ -21,7 +21,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
+  useMotionValueEvent(scrollY, "change", (latest: number) => {
     if (latest > 50 && !isScrolled) setIsScrolled(true);
     else if (latest <= 50 && isScrolled) setIsScrolled(false);
   });
