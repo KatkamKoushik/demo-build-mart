@@ -163,7 +163,7 @@ function Particles() {
         />
       </bufferGeometry>
       <pointsMaterial
-        color="#3B82F6"
+        color="#FF8A50"
         size={0.03}
         transparent
         opacity={0.5}
@@ -184,8 +184,8 @@ function Scene() {
         color="#FFFFFF"
         castShadow
       />
-      <pointLight position={[-3, 2, -2]} intensity={0.4} color="#3B82F6" />
-      <pointLight position={[4, -1, 3]} intensity={0.3} color="#0056B3" />
+      <pointLight position={[-3, 2, -2]} intensity={0.4} color="#FF8A50" />
+      <pointLight position={[4, -1, 3]} intensity={0.3} color="#FF5F15" />
 
       {/* Construction Material Primitives */}
       {/* Concrete blocks */}
@@ -206,7 +206,7 @@ function Scene() {
       <FloatingBlock
         position={[0.5, 1.2, -2]}
         size={[1, 0.5, 0.5]}
-        color="#2B2D42"
+        color="#262626"
         speed={1.5}
         distort={0.08}
       />
@@ -239,14 +239,14 @@ function Scene() {
         position={[3, 1, -1]}
         radius={0.4}
         tube={0.12}
-        color="#0056B3"
+        color="#FF5F15"
         speed={1.0}
       />
       <FloatingTorus
         position={[-2, -1.2, 1]}
         radius={0.3}
         tube={0.08}
-        color="#3B82F6"
+        color="#FF8A50"
         speed={1.4}
       />
 
@@ -254,7 +254,7 @@ function Scene() {
       <FloatingBlock
         position={[0, -0.3, 1]}
         size={[0.5, 0.5, 0.5]}
-        color="#0056B3"
+        color="#FF5F15"
         speed={0.6}
         distort={0.2}
       />

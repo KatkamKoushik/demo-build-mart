@@ -10,7 +10,7 @@ const collections = [
     id: "structural",
     title: "Structural Core",
     description: "High-grade cement, TMT steel, and foundational elements.",
-    bg: "bg-carbon",
+    bg: "bg-charcoal",
     text: "text-white",
     colSpan: "md:col-span-8",
     rowSpan: "md:row-span-2",
@@ -20,7 +20,7 @@ const collections = [
     id: "finishes",
     title: "Surface & Finishes",
     description: "Architectural tiles, marbles, and engineered stones.",
-    bg: "bg-cobalt",
+    bg: "bg-primary",
     text: "text-white",
     colSpan: "md:col-span-4",
     rowSpan: "md:row-span-1",
@@ -31,7 +31,7 @@ const collections = [
     title: "Timber & Joinery",
     description: "Premium laminates, solid woods, and architectural doors.",
     bg: "bg-white",
-    text: "text-carbon",
+    text: "text-charcoal",
     colSpan: "md:col-span-4",
     rowSpan: "md:row-span-1",
     image: null,
@@ -41,7 +41,7 @@ const collections = [
     title: "Lighting & Power",
     description: "Smart home systems and industrial-grade electricals.",
     bg: "bg-white",
-    text: "text-carbon",
+    text: "text-charcoal",
     colSpan: "md:col-span-4",
     rowSpan: "md:row-span-1",
     image: null,
@@ -50,7 +50,7 @@ const collections = [
     id: "plumbing",
     title: "Bath & Plumbing",
     description: "Luxury sanitaryware and precision fittings.",
-    bg: "bg-carbon-light",
+    bg: "bg-charcoal-light",
     text: "text-white",
     colSpan: "md:col-span-8",
     rowSpan: "md:row-span-1",
@@ -69,7 +69,7 @@ export default function CollectionsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl md:text-5xl font-medium tracking-tight text-carbon mb-4"
+            className="text-4xl md:text-5xl font-medium tracking-tight text-charcoal mb-4"
           >
             Material Collections
           </motion.h2>
@@ -107,8 +107,8 @@ export default function CollectionsSection() {
                   className="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-105"
                   style={{ backgroundImage: `url(${collection.image})` }}
                 >
-                  <div className="absolute inset-0 bg-carbon/40 mix-blend-multiply" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-carbon/90 via-carbon/20 to-transparent" />
+                  <div className="absolute inset-0 bg-charcoal/40 mix-blend-multiply" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/20 to-transparent" />
                 </div>
               )}
 

@@ -31,7 +31,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-alabaster text-carbon selection:bg-carbon selection:text-white">
+      <body className="min-h-full flex flex-col bg-alabaster text-charcoal selection:bg-charcoal selection:text-white">
         <Providers>
           {children}
           <MobileBottomNav />

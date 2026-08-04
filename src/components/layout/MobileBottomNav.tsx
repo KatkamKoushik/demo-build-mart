@@ -33,17 +33,17 @@ export default function MobileBottomNav() {
           >
             <item.icon
               className={`w-5 h-5 mb-1 transition-colors ${
-                item.active ? "text-cobalt-light" : "text-white/50"
+                item.active ? "text-primary-light" : "text-white/50"
               }`}
             />
             {item.active && (
               <motion.div
                 layoutId="mobile-nav-indicator"
-                className="absolute -bottom-1 w-1 h-1 rounded-full bg-cobalt-light"
+                className="absolute -bottom-1 w-1 h-1 rounded-full bg-primary-light"
               />
             )}
             {item.badge !== undefined && item.badge > 0 && (
-              <span className="absolute top-1 right-2 w-4 h-4 bg-cobalt-light text-white text-[9px] font-bold flex items-center justify-center rounded-full border border-carbon">
+              <span className="absolute top-1 right-2 w-4 h-4 bg-primary-light text-white text-[9px] font-bold flex items-center justify-center rounded-full border border-charcoal">
                 {item.badge}
               </span>
             )}

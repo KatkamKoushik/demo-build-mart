@@ -50,7 +50,7 @@ export default function LocationModal({
         >
           {/* Backdrop */}
           <motion.div
-            className="absolute inset-0 bg-carbon/50 backdrop-blur-sm"
+            className="absolute inset-0 bg-charcoal/50 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -75,17 +75,17 @@ export default function LocationModal({
               {/* Header */}
               <div className="flex items-center justify-between px-6 py-4 border-b border-border">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-cobalt/10 flex items-center justify-center">
-                    <MapPin className="w-4 h-4 text-cobalt" />
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <MapPin className="w-4 h-4 text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold text-carbon">
+                  <h3 className="text-lg font-semibold text-charcoal">
                     Change Delivery Location
                   </h3>
                 </div>
                 <button
                   id="modal-close"
                   onClick={onClose}
-                  className="p-1.5 rounded-lg hover:bg-carbon/5 text-muted hover:text-carbon
+                  className="p-1.5 rounded-lg hover:bg-charcoal/5 text-muted hover:text-charcoal
                              transition-colors cursor-pointer"
                   aria-label="Close modal"
                 >
@@ -98,7 +98,7 @@ export default function LocationModal({
                 <div>
                   <label
                     htmlFor="pin-input"
-                    className="block text-sm font-medium text-carbon mb-2"
+                    className="block text-sm font-medium text-charcoal mb-2"
                   >
                     Enter your PIN code
                   </label>
@@ -113,8 +113,8 @@ export default function LocationModal({
                     maxLength={6}
                     placeholder="e.g. 560001"
                     className="w-full px-4 py-3 rounded-xl bg-alabaster border border-border
-                               text-base text-carbon placeholder:text-muted-light
-                               focus:outline-none focus:border-cobalt focus:ring-2 focus:ring-cobalt/10
+                               text-base text-charcoal placeholder:text-muted-light
+                               focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10
                                transition-all tracking-widest font-semibold text-center text-lg"
                   />
                   {value.length > 0 && value.length < 6 && (
@@ -126,8 +126,8 @@ export default function LocationModal({
                 <motion.button
                   type="submit"
                   id="pin-submit"
-                  className="w-full py-3 rounded-xl bg-cobalt text-white font-semibold text-sm
-                             hover:bg-cobalt-dark transition-colors cursor-pointer
+                  className="w-full py-3 rounded-xl bg-primary text-charcoal-dark font-semibold text-sm
+                             hover:bg-primary-dark transition-colors cursor-pointer
                              disabled:opacity-40 disabled:cursor-not-allowed"
                   disabled={value.length !== 6}
                   whileHover={{ scale: value.length === 6 ? 1.01 : 1 }}

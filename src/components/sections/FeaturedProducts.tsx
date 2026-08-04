@@ -29,7 +29,7 @@ export default function FeaturedProductsSection() {
       <div className="container-main">
         <div className="mb-12 flex justify-between items-end">
           <div>
-            <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-carbon mb-2">
+            <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-charcoal mb-2">
               Featured Materials
             </h2>
             <p className="text-muted">Top-grade materials available for immediate dispatch.</p>
@@ -46,19 +46,19 @@ export default function FeaturedProductsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group p-6 rounded-2xl bg-alabaster border border-carbon/5 hover:border-carbon/10 transition-colors flex flex-col justify-between"
+                className="group p-6 rounded-2xl bg-alabaster border border-charcoal/5 hover:border-charcoal/10 transition-colors flex flex-col justify-between"
               >
                 <div>
                   <div className="flex justify-between items-start mb-4">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-cobalt px-2 py-1 bg-cobalt/10 rounded-md">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-primary px-2 py-1 bg-primary/10 rounded-md">
                       {product.category}
                     </span>
-                    <span className="text-sm font-medium text-carbon">
+                    <span className="text-sm font-medium text-charcoal">
                       ₹{product.price.toLocaleString('en-IN')} <span className="text-muted font-normal">/ {product.unit}</span>
                     </span>
                   </div>
                   
-                  <h3 className="text-xl font-medium text-carbon mb-2 leading-tight">
+                  <h3 className="text-xl font-medium text-charcoal mb-2 leading-tight">
                     {product.name}
                   </h3>
                   <p className="text-sm text-muted mb-6 line-clamp-2">
@@ -71,7 +71,7 @@ export default function FeaturedProductsSection() {
                   className={`w-full py-3 rounded-xl flex items-center justify-center gap-2 text-sm font-medium transition-all duration-300 ${
                     isAdded 
                       ? "bg-green-500 text-white shadow-lg shadow-green-500/20" 
-                      : "bg-carbon text-white hover:bg-carbon-light shadow-lg shadow-carbon/20"
+                      : "bg-charcoal text-white hover:bg-charcoal-light shadow-lg shadow-charcoal/20"
                   }`}
                 >
                   {isAdded ? (

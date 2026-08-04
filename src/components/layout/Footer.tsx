@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
-    <footer id="site-footer" className="bg-carbon text-white/80">
+    <footer id="site-footer" className="bg-charcoal text-white/80">
       <div className="container-main py-12">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Brand */}
@@ -16,7 +16,7 @@ export default function Footer() {
             transition={{ duration: 0.5 }}
           >
             <a href="#" className="flex items-center gap-2.5 group">
-              <span className="text-cobalt-light">
+              <span className="text-primary-light">
                 <svg viewBox="0 0 28 28" fill="none" width="24" height="24" aria-hidden="true">
                   <rect x="2" y="14" width="10" height="12" rx="1.5" fill="currentColor" />
                   <rect x="14" y="8" width="12" height="18" rx="1.5" fill="currentColor" opacity=".7" />

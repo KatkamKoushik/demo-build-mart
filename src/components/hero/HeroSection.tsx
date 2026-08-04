@@ -8,7 +8,7 @@ import dynamic from "next/dynamic";
 const HeroScene = dynamic(() => import("./HeroScene"), {
   ssr: false,
   loading: () => (
-    <div className="absolute inset-0 z-0 bg-gradient-to-br from-carbon via-carbon-dark to-carbon" />
+    <div className="absolute inset-0 z-0 bg-gradient-to-br from-charcoal via-charcoal-dark to-charcoal" />
   ),
 });
 
@@ -61,9 +61,9 @@ export default function HeroSection() {
           style={{ backgroundImage: "url('/hero-bg.png')" }}
         />
         {/* Dark overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-carbon/90 via-carbon/80 to-carbon/95" />
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/90 via-charcoal/80 to-charcoal/95" />
         {/* Cobalt accent gradient */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-cobalt/10 via-transparent to-cobalt/5" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-primary/5" />
       </div>
 
       {/* 3D Scene */}
@@ -84,7 +84,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <MapPin className="w-3.5 h-3.5 text-cobalt-light" />
+            <MapPin className="w-3.5 h-3.5 text-primary-light" />
             <span>
               Delivering to Bangalore:{" "}
               <strong className="text-white" id="delivery-pin">
@@ -109,13 +109,13 @@ export default function HeroSection() {
             </motion.span>
             <br />
             <motion.span
-              className="inline-block bg-gradient-to-r from-cobalt-light to-cobalt bg-clip-text text-transparent"
+              className="inline-block bg-gradient-to-r from-primary-light to-primary bg-clip-text text-transparent"
               variants={wordVariants}
             >
               Source{" "}
             </motion.span>
             <motion.span
-              className="inline-block bg-gradient-to-r from-cobalt to-cobalt-light bg-clip-text text-transparent"
+              className="inline-block bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent"
               variants={wordVariants}
             >
               Locally.
@@ -148,7 +148,7 @@ export default function HeroSection() {
               href="#collections"
               id="cta-explore"
               className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full
-                         bg-white text-carbon font-medium text-sm
+                         bg-white text-charcoal font-medium text-sm
                          hover:bg-white/90 shadow-2xl shadow-white/10
                          transition-colors duration-200"
               whileHover={{ scale: 1.02 }}
@@ -174,7 +174,7 @@ export default function HeroSection() {
                 transition={{ delay: 1.3 + i * 0.1 }}
               >
                 <div className="w-8 h-8 rounded-lg bg-white/8 flex items-center justify-center">
-                  <item.icon className="w-4 h-4 text-cobalt-light" />
+                  <item.icon className="w-4 h-4 text-primary-light" />
                 </div>
                 <span className="text-sm font-medium">{item.label}</span>
               </motion.div>

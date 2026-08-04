@@ -32,7 +32,7 @@ export default function Header() {
         id="site-header"
         className={`fixed top-0 left-0 right-0 z-50 h-[var(--header-height)] hidden md:block transition-all duration-300 ${
           isScrolled 
-            ? "bg-white/85 backdrop-blur-xl shadow-[0_4px_30px_rgba(43,45,66,0.04)]" 
+            ? "bg-white/85 backdrop-blur-xl shadow-[0_4px_30px_rgba(38, 38, 38,0.04)]" 
             : "bg-transparent"
         }`}
       >
@@ -42,7 +42,7 @@ export default function Header() {
             href="#"
             className="flex items-center gap-2.5 shrink-0 group"
           >
-            <span className="text-xl font-medium text-carbon tracking-tight">
+            <span className="text-xl font-medium text-charcoal tracking-tight">
               Build<strong className="font-extrabold">Mart</strong>
             </span>
           </a>
@@ -54,7 +54,7 @@ export default function Header() {
                 key={item.id}
                 href={item.href}
                 className={`text-sm font-medium transition-colors duration-300 ${
-                  item.active ? "text-carbon" : "text-muted hover:text-carbon"
+                  item.active ? "text-charcoal" : "text-muted hover:text-charcoal"
                 }`}
               >
                 {item.label}
@@ -76,9 +76,9 @@ export default function Header() {
               readOnly
               placeholder="Search materials..."
               onClick={() => setIsSearchOpen(true)}
-              className="w-full pl-11 pr-4 py-2.5 rounded-full bg-carbon/5 border-none
-                         text-sm text-carbon placeholder:text-muted-light cursor-pointer
-                         focus:outline-none focus:ring-1 focus:ring-carbon/20
+              className="w-full pl-11 pr-4 py-2.5 rounded-full bg-charcoal/5 border-none
+                         text-sm text-charcoal placeholder:text-muted-light cursor-pointer
+                         focus:outline-none focus:ring-1 focus:ring-charcoal/20
                          transition-all duration-300"
             />
           </motion.div>
@@ -86,20 +86,20 @@ export default function Header() {
           {/* Location Selector - Refined */}
           <button
             onClick={() => setIsModalOpen(true)}
-            className="hidden sm:flex items-center gap-2 text-sm text-carbon font-medium hover:opacity-70 transition-opacity"
+            className="hidden sm:flex items-center gap-2 text-sm text-charcoal font-medium hover:opacity-70 transition-opacity"
           >
-            <MapPin className="w-4 h-4 text-carbon" />
+            <MapPin className="w-4 h-4 text-charcoal" />
             <span>{pinCode}</span>
             <ChevronDown className="w-3 h-3 text-muted" />
           </button>
           
           <button 
             onClick={() => setIsCartOpen(true)}
-            className="relative w-10 h-10 flex items-center justify-center rounded-full bg-carbon text-white hover:bg-carbon-light transition-colors"
+            className="relative w-10 h-10 flex items-center justify-center rounded-full bg-charcoal text-white hover:bg-charcoal-light transition-colors"
           >
             <ShoppingBag className="w-4 h-4" />
             {totalItems > 0 && (
-              <span className="absolute -top-1 -right-1 w-4 h-4 bg-cobalt-light text-white text-[9px] font-bold flex items-center justify-center rounded-full border border-white">
+              <span className="absolute -top-1 -right-1 w-4 h-4 bg-primary-light text-white text-[9px] font-bold flex items-center justify-center rounded-full border border-white">
                 {totalItems}
               </span>
             )}
@@ -110,18 +110,18 @@ export default function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 h-16 md:hidden flex items-center justify-between px-4 transition-all duration-300 ${
           isScrolled 
-            ? "bg-white/85 backdrop-blur-xl shadow-[0_4px_30px_rgba(43,45,66,0.04)]" 
+            ? "bg-white/85 backdrop-blur-xl shadow-[0_4px_30px_rgba(38, 38, 38,0.04)]" 
             : "bg-transparent"
         }`}
       >
-        <a href="#" className="text-lg font-medium text-carbon tracking-tight">
+        <a href="#" className="text-lg font-medium text-charcoal tracking-tight">
           Build<strong className="font-extrabold">Mart</strong>
         </a>
         <button
           onClick={() => setIsModalOpen(true)}
           className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-white shadow-sm border border-border"
         >
-          <MapPin className="w-3 h-3 text-cobalt" />
+          <MapPin className="w-3 h-3 text-primary" />
           {pinCode}
         </button>
       </header>
