@@ -43,12 +43,10 @@ function FloatingBlock({
     >
       <mesh ref={meshRef} position={position} castShadow>
         <boxGeometry args={size} />
-        <MeshDistortMaterial
+        <meshStandardMaterial
           color={color}
           roughness={0.3}
           metalness={0.6}
-          distort={distort}
-          speed={1.5}
           transparent
           opacity={0.85}
         />
@@ -262,22 +260,7 @@ function Scene() {
       {/* Particles */}
       <Particles />
 
-      {/* Postprocessing */}
-      <EffectComposer>
-        <Bloom
-          intensity={0.5}
-          luminanceThreshold={0.6}
-          luminanceSmoothing={0.9}
-          mipmapBlur
-        />
-        <ChromaticAberration
-          blendFunction={BlendFunction.NORMAL}
-          offset={new THREE.Vector2(0.0005, 0.0005)}
-          radialModulation={false}
-          modulationOffset={0}
-        />
-        <Noise blendFunction={BlendFunction.SOFT_LIGHT} opacity={0.15} />
-      </EffectComposer>
+      {/* Removed heavy postprocessing to improve performance */}
     </>
   );
 }

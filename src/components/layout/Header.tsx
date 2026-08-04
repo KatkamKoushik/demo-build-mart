@@ -93,6 +93,15 @@ export default function Header() {
             <ChevronDown className="w-3 h-3 text-muted" />
           </button>
           
+          <a 
+            href="/profile"
+            className="hidden sm:flex items-center gap-2 text-sm text-charcoal font-medium hover:opacity-70 transition-opacity mx-4"
+          >
+            <span className="w-8 h-8 flex items-center justify-center rounded-full bg-charcoal/5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </span>
+          </a>
+          
           <button 
             onClick={() => setIsCartOpen(true)}
             className="relative w-10 h-10 flex items-center justify-center rounded-full bg-charcoal text-white hover:bg-charcoal-light transition-colors"
