@@ -6,6 +6,8 @@ import { Search, X, ArrowRight } from "lucide-react";
 import { useCart } from "@/providers/CartProvider";
 import { useRouter } from "next/navigation";
 
+import { FEATURED_PRODUCTS } from "@/data/products";
+
 const POPULAR_SEARCHES = ["Cement", "Plywood", "Vitrified Tiles", "TMT Bars", "LED Lights"];
 
 export default function SearchModal() {
@@ -13,7 +15,11 @@ export default function SearchModal() {
   const { isSearchOpen, setIsSearchOpen } = useCart();
   const [query, setQuery] = useState("");
 
-  // Simple mock results
+  const searchResults = FEATURED_PRODUCTS.filter((product) => 
+    product.name.toLowerCase().includes(query.toLowerCase()) || 
+    product.category.toLowerCase().includes(query.toLowerCase())
+  );
+  
   const hasResults = query.length > 2;
 
   return (
@@ -76,21 +82,28 @@ export default function SearchModal() {
                 <h3 className="text-sm font-semibold text-muted uppercase tracking-wider mb-2">
                   Products
                 </h3>
-                {/* Mock Search Results */}
-                {[1, 2, 3].map((i) => (
-                  <div key={i} onClick={() => { setIsSearchOpen(false); router.push(`/product/${i}`); }} className="flex items-center gap-4 group cursor-pointer">
-                    <div className="w-12 h-12 bg-charcoal/5 rounded-lg flex items-center justify-center">
-                      <Search className="w-5 h-5 text-muted opacity-50" />
+                {searchResults.length > 0 ? (
+                  searchResults.map((product) => (
+                    <div 
+                      key={product.id} 
+                      onClick={() => { setIsSearchOpen(false); router.push(`/product/${product.id}`); }} 
+                      className="flex items-center gap-4 group cursor-pointer"
+                    >
+                      <div className="w-12 h-12 bg-charcoal/5 rounded-lg flex items-center justify-center shrink-0">
+                        <Search className="w-5 h-5 text-muted opacity-50" />
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="font-medium text-charcoal group-hover:text-primary transition-colors">
+                          {product.name}
+                        </h4>
+                        <p className="text-sm text-muted">{product.category} • ₹{product.price.toLocaleString('en-IN')}</p>
+                      </div>
+                      <ArrowRight className="w-4 h-4 text-muted opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
-                    <div className="flex-1">
-                      <h4 className="font-medium text-charcoal group-hover:text-primary transition-colors">
-                        Premium {query} Type {i}
-                      </h4>
-                      <p className="text-sm text-muted">Category • Brand</p>
-                    </div>
-                    <ArrowRight className="w-4 h-4 text-muted opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                ))}
+                  ))
+                ) : (
+                  <p className="text-muted text-sm">No products found for "{query}".</p>
+                )}
               </div>
             )}
           </div>
