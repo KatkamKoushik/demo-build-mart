@@ -2,12 +2,8 @@
 
 import { useRef, useEffect, Suspense } from "react";
 import { motion } from "framer-motion";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MapPin, Search, Store, Shield, Clock, DollarSign } from "lucide-react";
 import dynamic from "next/dynamic";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const HeroScene = dynamic(() => import("./HeroScene"), {
   ssr: false,
@@ -45,23 +41,7 @@ export default function HeroSection() {
   const bgRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!bgRef.current || !sectionRef.current) return;
-
-    // Parallax on the background image
-    gsap.to(bgRef.current, {
-      y: "20%",
-      ease: "none",
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top top",
-        end: "bottom top",
-        scrub: 1,
-      },
-    });
-
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
+    // Parallax removed to fix mobile scroll lag
   }, []);
 
   return (

@@ -1,18 +1,10 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function InspirationSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [-50, 50]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
-
   return (
     <section id="inspiration" ref={containerRef} className="py-24 relative z-10 bg-carbon text-white overflow-hidden">
       <div className="container-main">
@@ -49,12 +41,11 @@ export default function InspirationSection() {
         </div>
 
         <motion.div 
-          style={{ scale }}
           className="relative w-full h-[60vh] md:h-[80vh] rounded-3xl overflow-hidden"
         >
           <motion.div 
             className="absolute inset-0 -top-[10%] -bottom-[10%] w-full h-[120%] bg-cover bg-center"
-            style={{ backgroundImage: "url('/inspiration-interior.png')", y }}
+            style={{ backgroundImage: "url('/inspiration-interior.png')" }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-carbon/90 via-transparent to-transparent" />
           

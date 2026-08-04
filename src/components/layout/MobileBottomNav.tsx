@@ -5,7 +5,7 @@ import { Home, Search, ShoppingBag, User } from "lucide-react";
 import { useCart } from "@/providers/CartProvider";
 
 export default function MobileBottomNav() {
-  const { totalItems } = useCart();
+  const { totalItems, setIsCartOpen, setIsSearchOpen } = useCart();
 
   const navItems = [
     { id: "home", label: "Home", icon: Home, active: true },
@@ -25,6 +25,10 @@ export default function MobileBottomNav() {
         {navItems.map((item) => (
           <button
             key={item.id}
+            onClick={() => {
+              if (item.id === "cart") setIsCartOpen(true);
+              else if (item.id === "explore") setIsSearchOpen(true);
+            }}
             className="relative flex flex-col items-center justify-center w-12 h-12"
           >
             <item.icon

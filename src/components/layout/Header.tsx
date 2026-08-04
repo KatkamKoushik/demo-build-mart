@@ -13,7 +13,7 @@ const navItems = [
 ];
 
 export default function Header() {
-  const { totalItems } = useCart();
+  const { totalItems, setIsCartOpen, setIsSearchOpen } = useCart();
   const [pinCode, setPinCode] = useState("560001");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
@@ -73,11 +73,11 @@ export default function Header() {
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted pointer-events-none" />
             <input
               type="search"
+              readOnly
               placeholder="Search materials..."
-              onFocus={() => setIsSearchFocused(true)}
-              onBlur={() => setIsSearchFocused(false)}
+              onClick={() => setIsSearchOpen(true)}
               className="w-full pl-11 pr-4 py-2.5 rounded-full bg-carbon/5 border-none
-                         text-sm text-carbon placeholder:text-muted-light
+                         text-sm text-carbon placeholder:text-muted-light cursor-pointer
                          focus:outline-none focus:ring-1 focus:ring-carbon/20
                          transition-all duration-300"
             />
@@ -93,7 +93,10 @@ export default function Header() {
             <ChevronDown className="w-3 h-3 text-muted" />
           </button>
           
-          <button className="relative w-10 h-10 flex items-center justify-center rounded-full bg-carbon text-white hover:bg-carbon-light transition-colors">
+          <button 
+            onClick={() => setIsCartOpen(true)}
+            className="relative w-10 h-10 flex items-center justify-center rounded-full bg-carbon text-white hover:bg-carbon-light transition-colors"
+          >
             <ShoppingBag className="w-4 h-4" />
             {totalItems > 0 && (
               <span className="absolute -top-1 -right-1 w-4 h-4 bg-cobalt-light text-white text-[9px] font-bold flex items-center justify-center rounded-full border border-white">

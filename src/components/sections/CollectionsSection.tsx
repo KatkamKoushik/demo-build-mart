@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 // Curated collections grouping the original 19 categories for a premium feel
@@ -60,13 +60,6 @@ const collections = [
 
 export default function CollectionsSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-
   return (
     <section id="collections" ref={containerRef} className="py-24 relative z-10 bg-alabaster">
       <div className="container-main">

@@ -13,8 +13,13 @@ interface CartContextType {
   items: CartItem[];
   addToCart: (item: Omit<CartItem, "quantity">) => void;
   removeFromCart: (id: string) => void;
+  updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
   totalItems: number;
+  isCartOpen: boolean;
+  setIsCartOpen: (open: boolean) => void;
+  isSearchOpen: boolean;
+  setIsSearchOpen: (open: boolean) => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -22,6 +27,9 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [mounted, setMounted] = useState(false);
+
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   // Avoid hydration mismatch by waiting for mount
   useEffect(() => {
@@ -40,27 +48,52 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       }
       return [...prev, { ...newItem, quantity: 1 }];
     });
+    // Auto-open cart when adding an item
+    setIsCartOpen(true);
   };
 
   const removeFromCart = (id: string) => {
     setItems((prev) => prev.filter((item) => item.id !== id));
   };
 
+  const updateQuantity = (id: string, quantity: number) => {
+    if (quantity <= 0) {
+      removeFromCart(id);
+      return;
+    }
+    setItems((prev) =>
+      prev.map((item) => (item.id === id ? { ...item, quantity } : item))
+    );
+  };
+
   const clearCart = () => setItems([]);
 
   const totalItems = items.reduce((total, item) => total + item.quantity, 0);
 
+  const value = {
+    items,
+    addToCart,
+    removeFromCart,
+    updateQuantity,
+    clearCart,
+    totalItems,
+    isCartOpen,
+    setIsCartOpen,
+    isSearchOpen,
+    setIsSearchOpen
+  };
+
   // Render nothing or generic structure until mounted to prevent hydration errors with dynamic cart numbers
   if (!mounted) {
     return (
-      <CartContext.Provider value={{ items: [], addToCart, removeFromCart, clearCart, totalItems: 0 }}>
+      <CartContext.Provider value={{ ...value, items: [], totalItems: 0 }}>
         {children}
       </CartContext.Provider>
     );
   }
 
   return (
-    <CartContext.Provider value={{ items, addToCart, removeFromCart, clearCart, totalItems }}>
+    <CartContext.Provider value={value}>
       {children}
     </CartContext.Provider>
   );
