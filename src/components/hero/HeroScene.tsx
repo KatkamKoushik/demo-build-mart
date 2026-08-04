@@ -185,7 +185,7 @@ function Scene() {
         castShadow
       />
       <pointLight position={[-3, 2, -2]} intensity={0.4} color="#FF8A50" />
-      <pointLight position={[4, -1, 3]} intensity={0.3} color="#FF5F15" />
+      <pointLight position={[4, -1, 3]} intensity={0.3} color="#F59E0B" />
 
       {/* Construction Material Primitives */}
       {/* Concrete blocks */}
@@ -206,7 +206,7 @@ function Scene() {
       <FloatingBlock
         position={[0.5, 1.2, -2]}
         size={[1, 0.5, 0.5]}
-        color="#262626"
+        color="#1F2937"
         speed={1.5}
         distort={0.08}
       />
@@ -239,7 +239,7 @@ function Scene() {
         position={[3, 1, -1]}
         radius={0.4}
         tube={0.12}
-        color="#FF5F15"
+        color="#F59E0B"
         speed={1.0}
       />
       <FloatingTorus
@@ -254,7 +254,7 @@ function Scene() {
       <FloatingBlock
         position={[0, -0.3, 1]}
         size={[0.5, 0.5, 0.5]}
-        color="#FF5F15"
+        color="#F59E0B"
         speed={0.6}
         distort={0.2}
       />

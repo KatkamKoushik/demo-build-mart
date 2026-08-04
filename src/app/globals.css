@@ -9,30 +9,30 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
 
-  /* BuildMart Palette */
-  --color-charcoal: #262626;
-  --color-charcoal-light: #333333;
-  --color-charcoal-dark: #000000;
-  --color-alabaster: #FAFAFA;
-  --color-alabaster-warm: #F5F5F0;
-  --color-primary: #FF5F15;
-  --color-primary-light: #FF8A50;
-  --color-primary-dark: #D84A00;
-  --color-primary-glow: #FF5F1520;
-  --color-muted: #8D99AE;
-  --color-muted-light: #B0BAC9;
-  --color-surface: #FFFFFF;
+  /* BuildMart Palette - Updated to Amber & Dark Slate */
+  --color-charcoal: #1F2937; /* Dark Slate */
+  --color-charcoal-light: #374151;
+  --color-charcoal-dark: #111827;
+  --color-alabaster: #F8FAFC; /* Background / Light Gray */
+  --color-alabaster-warm: #F1F5F9;
+  --color-primary: #F59E0B; /* Accent / Amber */
+  --color-primary-light: #FBBF24;
+  --color-primary-dark: #D97706;
+  --color-primary-glow: #F59E0B20;
+  --color-muted: #6B7280;
+  --color-muted-light: #9CA3AF;
+  --color-surface: #FFFFFF; /* Cards */
   --color-surface-elevated: #FFFFFF;
   --color-border: #E5E7EB;
-  --color-border-light: #F0F0F0;
+  --color-border-light: #F3F4F6;
   --color-success: #10B981;
   --color-warning: #F59E0B;
   --color-star: #FBBF24;
 }
 
 :root {
-  --background: #FAFAFA;
-  --foreground: #262626;
+  --background: #F8FAFC;
+  --foreground: #111827; /* Text */
   --header-height: 72px;
   --section-padding: clamp(3rem, 8vw, 6rem);
   --container-max: 1280px;
@@ -40,11 +40,11 @@
   --radius-md: 12px;
   --radius-lg: 20px;
   --radius-xl: 28px;
-  --shadow-sm: 0 1px 3px rgba(38, 38, 38, 0.06);
-  --shadow-md: 0 4px 16px rgba(38, 38, 38, 0.08);
-  --shadow-lg: 0 8px 32px rgba(38, 38, 38, 0.12);
-  --shadow-xl: 0 16px 48px rgba(38, 38, 38, 0.16);
-  --shadow-glow: 0 0 30px rgba(255, 95, 21, 0.15);
+  --shadow-sm: 0 1px 3px rgba(31, 41, 55, 0.06);
+  --shadow-md: 0 4px 16px rgba(31, 41, 55, 0.08);
+  --shadow-lg: 0 8px 32px rgba(31, 41, 55, 0.12);
+  --shadow-xl: 0 16px 48px rgba(31, 41, 55, 0.16);
+  --shadow-glow: 0 0 30px rgba(245, 158, 11, 0.15);
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -81,8 +81,8 @@ body {
 /* ═══════ SELECTION ═══════ */
 
 ::selection {
-  background: rgba(255, 95, 21, 0.2);
-  color: #262626;
+  background: rgba(245, 158, 11, 0.2);
+  color: #1F2937;
 }
 
 /* ═══════ SCROLLBAR ═══════ */
@@ -157,7 +157,7 @@ body {
 /* ═══════ GRADIENT TEXT ═══════ */
 
 .gradient-text {
-  background: linear-gradient(135deg, #FF5F15, #FF8A50);
+  background: linear-gradient(135deg, #F59E0B, #FBBF24);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
