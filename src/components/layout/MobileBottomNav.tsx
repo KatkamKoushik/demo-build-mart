@@ -2,15 +2,18 @@
 
 import { motion } from "framer-motion";
 import { Home, Search, ShoppingBag, User } from "lucide-react";
-
-const navItems = [
-  { id: "home", label: "Home", icon: Home, active: true },
-  { id: "explore", label: "Explore", icon: Search },
-  { id: "cart", label: "Cart", icon: ShoppingBag, badge: 3 },
-  { id: "profile", label: "Profile", icon: User },
-];
+import { useCart } from "@/providers/CartProvider";
 
 export default function MobileBottomNav() {
+  const { totalItems } = useCart();
+
+  const navItems = [
+    { id: "home", label: "Home", icon: Home, active: true },
+    { id: "explore", label: "Explore", icon: Search },
+    { id: "cart", label: "Cart", icon: ShoppingBag, badge: totalItems },
+    { id: "profile", label: "Profile", icon: User },
+  ];
+
   return (
     <motion.div
       initial={{ y: 100 }}
@@ -35,7 +38,7 @@ export default function MobileBottomNav() {
                 className="absolute -bottom-1 w-1 h-1 rounded-full bg-cobalt-light"
               />
             )}
-            {item.badge && (
+            {item.badge > 0 && (
               <span className="absolute top-1 right-2 w-4 h-4 bg-cobalt-light text-white text-[9px] font-bold flex items-center justify-center rounded-full border border-carbon">
                 {item.badge}
               </span>

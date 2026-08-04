@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Search, ShoppingBag, MapPin, ChevronDown } from "lucide-react";
 import LocationModal from "@/components/ui/LocationModal";
+import { useCart } from "@/providers/CartProvider";
 
 const navItems = [
   { id: "home", label: "Home", href: "#", active: true },
@@ -12,6 +13,7 @@ const navItems = [
 ];
 
 export default function Header() {
+  const { totalItems } = useCart();
   const [pinCode, setPinCode] = useState("560001");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
@@ -100,9 +102,11 @@ export default function Header() {
           
           <button className="relative w-10 h-10 flex items-center justify-center rounded-full bg-carbon text-white hover:bg-carbon-light transition-colors">
             <ShoppingBag className="w-4 h-4" />
-            <span className="absolute -top-1 -right-1 w-4 h-4 bg-cobalt-light text-white text-[9px] font-bold flex items-center justify-center rounded-full border border-white">
-              3
-            </span>
+            {totalItems > 0 && (
+              <span className="absolute -top-1 -right-1 w-4 h-4 bg-cobalt-light text-white text-[9px] font-bold flex items-center justify-center rounded-full border border-white">
+                {totalItems}
+              </span>
+            )}
           </button>
         </div>
       </motion.header>

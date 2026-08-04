@@ -1,5 +1,6 @@
 import HeroSection from "@/components/hero/HeroSection";
 import CollectionsSection from "@/components/sections/CollectionsSection";
+import FeaturedProductsSection from "@/components/sections/FeaturedProducts";
 import InspirationSection from "@/components/sections/InspirationSection";
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between pb-24 md:pb-0">
       <HeroSection />
       <CollectionsSection />
+      <FeaturedProductsSection />
       <InspirationSection />
     </main>
   );
